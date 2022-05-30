@@ -436,6 +436,8 @@ static int output_executable(const char *out_filename, const char *cfilename,
 #endif
     /* XXX: use the executable path to find the includes files and
        libraries */
+    *arg++ = "-static";
+    *arg++ = "-no-pie";
     *arg++ = "-D";
     *arg++ = "_GNU_SOURCE";
     *arg++ = "-I";
