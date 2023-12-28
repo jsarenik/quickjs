@@ -66,7 +66,7 @@ endif
 ifdef CONFIG_CLANG
   HOST_CC=clang
   CC=$(CROSS_PREFIX)clang
-  CFLAGS=-g -Wall -MMD -MF $(OBJDIR)/$(@F).d
+  CFLAGS=-s -Wall -MMD -MF $(OBJDIR)/$(@F).d
   CFLAGS += -Wextra
   CFLAGS += -Wno-sign-compare
   CFLAGS += -Wno-missing-field-initializers
@@ -87,7 +87,7 @@ ifdef CONFIG_CLANG
 else
   HOST_CC=gcc
   CC=$(CROSS_PREFIX)gcc
-  CFLAGS=-g -Wall -MMD -MF $(OBJDIR)/$(@F).d
+  CFLAGS=-s -Wall -MMD -MF $(OBJDIR)/$(@F).d
   CFLAGS += -Wno-array-bounds -Wno-format-truncation
   ifdef CONFIG_LTO
     AR=$(CROSS_PREFIX)gcc-ar
@@ -113,7 +113,7 @@ CFLAGS_DEBUG=$(CFLAGS) -O0
 CFLAGS_SMALL=$(CFLAGS) -Os
 CFLAGS_OPT=$(CFLAGS) -O2
 CFLAGS_NOLTO:=$(CFLAGS_OPT)
-LDFLAGS=-g
+LDFLAGS=-s -static -no-pie
 ifdef CONFIG_LTO
 CFLAGS_SMALL+=-flto
 CFLAGS_OPT+=-flto
