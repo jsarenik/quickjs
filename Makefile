@@ -158,9 +158,6 @@ ifeq ($(CROSS_PREFIX),)
 PROGS+=examples/hello
 ifndef CONFIG_ASAN
 PROGS+=examples/hello_module examples/test_fib
-ifndef CONFIG_DARWIN
-PROGS+=examples/fib.so examples/point.so
-endif
 endif
 endif
 
